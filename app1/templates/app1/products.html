@@ -1,0 +1,59 @@
+{% extends 'app1/main.html' %}
+
+{% block content %}
+{%include 'app1/background.html' %}
+
+<br>
+<style>
+
+    .container {
+        width: 90%;
+       
+       
+        padding: 14px;
+       
+     
+        border-radius: 10px;
+       
+        
+    }
+    .content-container {
+        width: 100%;
+        background-color:#ff9e99;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+     
+     
+    }
+</style>
+
+
+
+<div class="container mt-4">
+    <div class="content-container mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+       
+        <h1 class="text-center mb-4 section-heading">PRODUCTS</h1>
+       
+        <table class="table">
+    
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+                  
+                {%for i in list_of_products%}
+            <tr>    
+                <td>{{i.name}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.price}}</td>
+            </tr>
+                {% endfor %}
+            
+            </tbody>
+          </table>
+
+{% endblock content %}

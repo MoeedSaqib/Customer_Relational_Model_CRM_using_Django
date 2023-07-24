@@ -1,0 +1,146 @@
+{%extends 'app1/main.html'%}
+{% block content %} 
+{%include 'app1/status.html' %}
+{%include 'app1/background.html' %}
+
+
+<style>
+
+    .container {
+        width: 28%;
+       
+        margin-left: 150px;
+        padding: 12px;
+       
+        float:left;
+        border-radius: 10px;
+       
+        
+    }
+    .content-container {
+        width: 99%;
+        background-color:#ff9e99;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+        float:left;
+        border-radius: 10px;
+        overflow: hidden;
+        border-color: black;
+        border-width:20px;
+    }
+
+    .container-t {
+        width: 56%;
+     
+        margin-right: 150px;
+        padding: 20px;
+        float:right;
+        border-radius: 10px;
+        
+    }
+    .content-container-t {
+        width: 90%;
+        padding: 20px;
+        background-color:#ff9e99;
+        box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+        float:right;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Additional styling for the table */
+    .content-container table {
+        width: 100%; /* Table takes full width inside the container */
+        margin-bottom: 0; /* Remove the default bottom margin for the table */
+    }
+
+    /* Style for the table rows */
+    .content-container tr th,
+    .content-container tr td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Style for the table headers */
+    .content-container th {
+        background-color: #343a40; /* Dark background for table header */
+        color: #fff; /* White text */
+    }
+    .btn-create {
+        background-color: #ff6961; /* Yellow */
+        color: black; /* White text */
+        border-color: #ffc107; /* Yellow border */
+        margin-bottom: 10px;
+        font-size:20px;
+        font-weight:500%;
+        font-family:Courier, monospace;
+
+    }
+
+</style>
+
+
+<div class="container mt-4">
+<div class="content-container mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+   
+    <h1 class="text-center mb-4 section-heading">CUSTOMERS</h1>
+    <a class="btn btn-create btn-sm btn-block" href="">Create Customer</a>
+    <table class="table">
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Customer</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in customers %}
+          <tr>
+            <td><a class="btn btn-sm btn-info" href="{% url 'customers' i.id %}">View</a></td>
+
+            <td>{{ i.name }}</td>
+            <td>{{ i.phone }}</td>
+          </tr>
+          {% endfor %}
+        
+        </tbody>
+      </table>
+ 
+
+</div>
+</div>
+<div class="container-t mt-4">
+    <div class="content-container-t mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+       
+        <h1 class="text-center mb-4 section-heading">LAST 5 ORDERS</h1>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Date Orderd</th>
+                <th scope="col">Status</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for a in orders%}
+                <tr>    
+                    <td>{{a.product}}</td>
+                    <td>{{a.date}}</td>
+                    <td>{{a.status}}</td>
+                    <td><a class="btn btn-sm btn-success" href="{% url 'updateOrder' a.id %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger"href="{% url 'deleteOrder' a.id %}">Delete</a></td>
+                 </tr>
+              {% endfor %}
+            
+            </tbody>
+          </table>
+     
+    
+    </div>
+</div>
+
+
+{%endblock%}

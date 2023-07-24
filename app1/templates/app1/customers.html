@@ -1,0 +1,223 @@
+{% extends 'app1/main.html' %}
+
+{%block content %}
+{%include 'app1/background.html' %}
+<br>
+<style>
+
+   .container-a {
+       width: 30%;
+      
+   
+       padding: 12px;
+      
+   
+       border-radius: 10px;
+      
+       
+   }
+   .content-container-a {
+       width: 99%;
+       background-color:#ff9e99;
+       padding: 20px;
+       box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+      
+       border-radius: 10px;
+       overflow: hidden;
+       border-color: black;
+       border-width:20px;
+   }
+
+   
+   .container-b {
+      width: 35%;
+     
+  ;
+      padding: 12px;
+     
+     
+      border-radius: 10px;
+     
+      
+  }
+  .content-container-b {
+      width: 99%;
+      background-color:#ff9e99;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+   ]
+      border-radius: 10px;
+      overflow: hidden;
+      border-color: black;
+      border-width:20px;
+  }
+
+  .container-c {
+   width: 33%;
+   padding: 12px;
+  
+
+   border-radius: 10px;
+  
+   
+}
+
+.content-container-c {
+   width: 99%;
+   background-color:#ff9e99;
+   padding: 20px;
+   box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+ 
+   border-radius: 10px;
+   overflow: hidden;
+   border-color: black;
+   border-width:20px;
+}
+
+.container-d {
+   width: 99%;
+   padding: 12px;
+  
+
+   border-radius: 10px;
+  
+   
+}
+.content-container-d {
+   width: 99%;
+   background-color:#ff9e99;
+   padding: 20px;
+   box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+ 
+   border-radius: 10px;
+   overflow: hidden;
+   border-color: black;
+   border-width:20px;
+}
+.content-container-d input[type="text"],
+.content-container-d select {
+    background-color: transparent;
+    border: 1px solid #ced4da; /* Add a border to make it visible */
+}
+
+/* Transparent button */
+.content-container-d button {
+    background-color: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+.container-g {
+   width: 99%;
+   padding: 12px;
+  
+
+   border-radius: 10px;
+  
+   
+}
+
+.content-container-g {
+   width: 99%;
+   padding: 20px;
+   background-color:#ff9e99;
+   box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+  
+   border-radius: 10px;
+   overflow: hidden;
+}
+</style>
+<div class="row">
+<div class="container-a mt-4">
+   <div class="content-container-a mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+      
+       <h1 class="text-center mb-4 section-heading">CUSTOMERS</h1>
+       <hr>
+       <a class="btn btn-outline-info btn-sm btn-block" href="">Update Customer</a>
+       <a class="btn btn-outline-success btn-sm btn-block" href="{% url 'createOrder' customers.id %}">Place Order</a>
+    
+   
+   </div>
+</div>
+
+<div class="container-b mt-4">
+   <div class="content-container-b mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+      
+       <h1 class="text-center mb-4 section-heading">CONTACT INFORMATION</h1>
+       <hr>
+       <p>Email: {{customers.email}} </p>
+      
+       <p>Phone: {{customers.phone}} </p>
+   
+   </div>
+</div>
+
+<div class="container-c mt-4">
+   <div class="content-container-c mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+      
+       <h1 class="text-center mb-4 section-heading">TOTAL ORDERS</h1>
+       <hr>
+            <h1 style="text-align: center;padding: 10px"> {{order_count}}</h1>
+        </div>
+    </div>
+</div>  
+</div>
+
+
+<br>
+
+<div class="container-d mt-4">
+   <div class="content-container-d mx-3 my-1"> 
+     
+            <form method="get">
+               {{myFilter.form}}
+            
+             <button class="btn btn-primary" type="submit">Search</button>
+           
+            </form>
+   
+   </div>
+</div>
+
+
+<br>
+
+
+<div class="container-g mt-4">
+   <div class="content-container-g mx-3 my-1"> <!-- Add mx-2 and my-2 for horizontal and vertical margins -->
+      
+       <h1 class="text-center mb-4 section-heading">LAST 5 ORDERS</h1>
+       <table class="table">
+           <thead class="thead-dark">
+             <tr>
+               <th scope="col">Product</th>
+               <th scope="col">Note</th>
+               <th scope="col">Date Ordered</th>
+               <th scope="col">Status</th>
+               <th scope="col">Update</th>
+               <th scope="col">Remove</th>
+             </tr>
+           </thead>
+           <tbody>
+            {%for order in orders%}
+            <tr>
+               <td>{{order.product}}</td>
+               <td>{{order.note}}</td>
+               <td>{{order.date}}</td>
+               <td>{{order.status}}</td>
+               <td><a class="btn btn-sm btn-success" href="{% url 'updateOrder' order.id %}">Update</a></td>
+               <td><a class="btn btn-sm btn-danger"href="{% url 'deleteOrder' order.id %}">Delete</a></td>
+
+
+       
+             {% endfor %}
+           
+           </tbody>
+         </table>
+    
+   
+   </div>
+</div>
+
+
+
+{%endblock%}

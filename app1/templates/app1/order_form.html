@@ -1,0 +1,56 @@
+{% extends 'app1/main.html' %}
+{%load static%}
+{%block content%}
+{%include 'app1/background.html' %}
+<style>
+  .content-container-f {
+    width: 30%;
+   
+    position: fixed;
+ 
+    top: 10%;
+    left: 35%;
+   
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+  
+    border-radius: 10px;
+    overflow: hidden;
+    border-color: black;
+    border-width:20px;
+    align:center;
+ }
+ .content-container-f input[type="text"],
+ .content-container-f select {
+  background-image: url("{% static 'images/Untitled designs.png' %}");
+
+     border: 1px solid #ced4da; /* Add a border to make it visible */
+ }
+ .content-container-f button{
+  background-color: black;
+  align:center;
+ }
+</style>
+ 
+
+
+
+<div class="container-f mt-4">
+   <div class="content-container-f mx-3 my-1"> 
+     
+            
+    <form action="" method="POST" >
+      {% csrf_token %}
+        {{formset.management_form}}
+        {% for form in formset %}
+          {{form}}
+          <hr>
+        {% endfor %}  
+             <button class="btn btn-primary" type="submit">Submit</button>
+           
+            </form>
+   
+   </div>
+</div>
+
+{%endblock%}

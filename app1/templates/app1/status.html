@@ -1,0 +1,175 @@
+{%load static%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<style>
+
+
+    .container-s {
+        max-width: 990px;
+        margin: 0 auto;
+        margin-bottom: 80px;
+        border-radius: 15px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+        background-image: url("{% static 'images/Untitled designs.png' %}");
+
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+        margin: 50px 0;
+    }
+
+    .col {
+        flex: 1;
+        margin: 20px;
+        padding: 5px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.3, 0.4);
+        background-color: #ffffff;
+        transition: transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: black;
+    }
+
+    .col:hover {
+        transform: translateY(-15px);
+    }
+
+    .card {
+        background-color: #b7e1cd;
+        border: none;
+        border-radius: 5px;
+        padding: 020px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-title {
+        font-size: 18px;
+        text-align:center;
+        margin: 0;
+        color:black;
+    }
+
+    .card-body {
+        padding-top: 10px;
+    }
+
+    
+
+    .text-white {
+        color: black;
+    }
+
+    /* Additional styling for a professional look */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Helvetica', sans-serif;
+        font-weight: 650;
+    }
+
+    p {
+        line-height: 1;
+    }
+
+    /* Custom pastel color scheme */
+    .blue-background {
+        background-color: #aad8e6;
+    }
+
+    .blue-text {
+        color: #aad8e6;
+    }
+
+    .light-blue-background {
+        background-color: #ffffd1;
+      
+    }
+
+    .light-blue-text {
+        color: red;
+    }
+
+ 
+
+
+
+    .pink-background {
+        background-color: #fbc9da;
+    }
+
+    .pink-text {
+        color: black;
+    }
+
+    /* Update colors */
+    .green-background {
+        background-color: #c3eccd;
+    }
+
+    /* Center the "Order Dashboard" heading */
+    .container h1 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .blue-text{
+        color:black;
+    }
+    /* Add more styles as needed */
+</style>
+
+
+<div class="container-s">
+    <h1 class="blue-text">ORDERS DASHBOARD</h1>
+    <div class="row">
+        <div class="col">
+            <div class="card blue-background text-white mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <h5 class="card-title">Total Orders</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_orders}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card light-blue-background text-white mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <h5 class="card-title">Orders Delivered</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{delivered}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card pink-background text-white mb-1" id="orders-pending">
+                <div class="card-header">
+                    <h5 class="card-title">Orders Pending</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{pending}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
